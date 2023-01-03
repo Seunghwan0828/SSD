@@ -39,7 +39,7 @@ def seed_everything(seed):
 seed_everything(SEED)
 
 
-class ConstDataset(Dataset):
+class Dataset(Dataset):
     def __init__(
         self,
         image_dir: os.PathLike,
@@ -117,7 +117,7 @@ optimizer = optim.Adam(model.parameters(), lr=1e-4)
 
 
 if __name__ == '__main__':
-    trainset = ConstDataset('data/train/', 'data/annotations/train_annotations.json', transforms)
+    trainset = Dataset('data/train/', 'data/annotations/train_annotations.json', transforms)
 
     train_loader = DataLoader(trainset, batch_size=32, num_workers=0, collate_fn=collate_fn)
 
